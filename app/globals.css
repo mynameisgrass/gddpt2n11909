@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+/* ===== CUSTOM CSS VARIABLES & DESIGN TOKENS ===== */
+:root {
+  --color-primary: #D4A574;
+  --color-primary-light: #E8C9A0;
+  --color-accent: #8B1A1A;
+  --color-accent-light: #C44D4D;
+  --color-bg: #0A0A0A;
+  --color-bg-warm: #0F0D0B;
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface-hover: rgba(255, 255, 255, 0.06);
+  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-text: #F5F0EB;
+  --color-text-muted: rgba(245, 240, 235, 0.6);
+  --color-text-dim: rgba(245, 240, 235, 0.35);
+  --color-gold-gradient: linear-gradient(135deg, #D4A574 0%, #E8C9A0 50%, #D4A574 100%);
+
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-inter);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ===== GLOBAL RESETS ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== SELECTION COLOR ===== */
+::selection {
+  background: rgba(212, 165, 116, 0.3);
+  color: var(--color-text);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 165, 116, 0.15);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 165, 116, 0.3);
+}
+
+/* ===== AURORA GRADIENT ANIMATION ===== */
+@keyframes aurora {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+}
+
+.aurora-bg {
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(212, 165, 116, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139, 26, 26, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 20%, rgba(232, 201, 160, 0.06) 0%, transparent 60%),
+    var(--color-bg);
+  background-size: 200% 200%;
+  animation: aurora 25s ease-in-out infinite;
+}
+
+/* ===== GLASSMORPHISM — SHARP VARIANT ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== GOLD GRADIENT TEXT ===== */
+.text-gold-gradient {
+  background: var(--color-gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== FLOATING NAV — SHARP ===== */
+.nav-glass {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ===== HORIZONTAL RULE DECORATION ===== */
+.hr-gold {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 165, 116, 0.3) 50%,
+    transparent 100%
+  );
+  border: none;
+}
+
+/* ===== SECTION CONTAINER ===== */
+.section-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* ===== SECTION SPACING ===== */
+.section-spacing {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 180px;
+    padding-bottom: 180px;
+  }
+}
+
+/* ===== IMAGE COLLAGE GRID ===== */
+.image-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.4fr 1fr;
+  gap: 4px;
+}
+
+.image-collage > *:first-child {
+  grid-column: 1 / -1;
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY SCALE ===== */
+.heading-hero {
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.heading-section {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.heading-card {
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.body-large {
+  font-size: clamp(1rem, 1.4vw, 1.1875rem);
+  line-height: 2.0;
+}
+
+.body-base {
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
+  line-height: 1.9;
+}
+
+.caption {
+  font-size: clamp(0.6875rem, 0.9vw, 0.8125rem);
+  line-height: 1.65;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .aurora-bg {
+    animation: none;
+  }
+}
