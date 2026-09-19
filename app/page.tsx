@@ -3,7 +3,9 @@ import ScrollProgress from "./components/ScrollProgress";
 import HeroSection from "./components/HeroSection";
 import BentoGrid from "./components/BentoGrid";
 import ParallaxSection from "./components/ParallaxSection";
+import FoodHistory from "./components/FoodHistory";
 import TextReveal from "./components/TextReveal";
+import SourcesSection from "./components/SourcesSection";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -90,11 +92,11 @@ export default function Home() {
           },
           secondary: [
             {
-              src: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=80",
+              src: "https://static.vinwonders.com/production/tra-sen-tay-ho-1-1.jpg",
               alt: "Nghi thức pha trà sen truyền thống Hà Nội",
             },
             {
-              src: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80",
+              src: "https://bizweb.dktcdn.net/thumb/1024x1024/100/444/178/products/c2.jpg?v=1786162768250",
               alt: "Bánh cốm xanh truyền thống Hà Nội bọc lá chuối",
             },
           ],
@@ -106,8 +108,14 @@ export default function Home() {
         ]}
       />
 
-      {/* Section 4: Thách thức & Bảo tồn */}
+      {/* Section 4: Lịch sử & Giai thoại các món ăn */}
+      <FoodHistory />
+
+      {/* Section 5: Thách thức & Bảo tồn */}
       <TextReveal />
+
+      {/* Section 6: Nguồn tham khảo & Cơ sở tư liệu (mở rộng / thu gọn) */}
+      <SourcesSection />
 
       <Footer />
     </main>

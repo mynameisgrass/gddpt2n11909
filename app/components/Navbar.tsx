@@ -9,7 +9,9 @@ const navItems = [
   { label: "Khái niệm", href: "#khai-niem" },
   { label: "Đặc trưng", href: "#dac-trung" },
   { label: "Điểm nhấn", href: "#diem-nhan" },
+  { label: "Lịch sử", href: "#lich-su" },
   { label: "Bảo tồn", href: "#bao-ton" },
+  { label: "Nguồn", href: "#nguon-tham-khao" },
 ];
 
 export default function Navbar() {
