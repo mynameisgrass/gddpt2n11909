@@ -158,27 +158,31 @@ export default function FoodHistory() {
       {/* Decorative subtle border line top */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 
-      <div className="section-container">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="caption text-[var(--color-primary)] mb-4 tracking-[0.2em]">
-            Dòng chảy thời gian
-          </p>
-          <h2
-            className="heading-section text-[var(--color-text)] tracking-tight mb-6"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Lịch sử & Giai thoại{" "}
-            <span className="text-gold-gradient">Ẩm thực Hà Nội</span>
-          </h2>
-          <div className="hr-gold w-20 mx-auto mb-6" />
-          <p className="body-base text-[var(--color-text-muted)] leading-[1.9]">
-            Mỗi món ăn Hà Nội không sinh ra ngẫu nhiên, mà là kết tinh qua hàng
-            trăm năm thăng trầm lịch sử, giao lưu văn hóa và sự sáng tạo tinh tế
-            của người Tràng An.
-          </p>
-        </div>
+      {/* SEPARATE ELEMENT 1: Header (Strictly Centered across the full viewport) */}
+      <div className="w-full flex flex-col items-center justify-center text-center px-4 sm:px-6 mb-12 sm:mb-14">
+        <p className="caption text-[var(--color-primary)] mb-4 tracking-[0.2em] text-center">
+          Dòng chảy thời gian
+        </p>
+        <h2
+          className="heading-section text-[var(--color-text)] tracking-tight mb-6 text-center"
+          style={{ fontFamily: "var(--font-display)", textAlign: "center" }}
+        >
+          Lịch sử & Giai thoại{" "}
+          <span className="text-gold-gradient">Ẩm thực Hà Nội</span>
+        </h2>
+        <div className="hr-gold w-20 mx-auto mb-6" style={{ margin: "0 auto 1.5rem auto" }} />
+        <p
+          className="body-base text-[var(--color-text-muted)] leading-[1.9] text-center max-w-2xl mx-auto"
+          style={{ textAlign: "center", margin: "0 auto" }}
+        >
+          Mỗi món ăn Hà Nội không sinh ra ngẫu nhiên, mà là kết tinh qua hàng
+          trăm năm thăng trầm lịch sử, giao lưu văn hóa và sự sáng tạo tinh tế
+          của người Tràng An.
+        </p>
+      </div>
 
+      {/* SEPARATE ELEMENT 2: Interactive Food Tabs and Showcase Card */}
+      <div className="section-container">
         {/* Food Selector Tabs */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
           {foodsHistory.map((food) => {
@@ -187,10 +191,11 @@ export default function FoodHistory() {
               <button
                 key={food.id}
                 onClick={() => setSelectedFood(food.id)}
-                className={`px-4 py-2.5 text-xs md:text-sm font-medium transition-all duration-300 relative cursor-pointer border ${isActive
+                className={`px-4 py-2.5 text-xs md:text-sm font-medium transition-all duration-300 relative cursor-pointer border ${
+                  isActive
                     ? "text-[var(--color-bg)] bg-[var(--color-primary)] border-[var(--color-primary)] shadow-lg shadow-[var(--color-primary)]/20"
                     : "text-[var(--color-text-muted)] bg-white/[0.02] border-white/[0.08] hover:border-white/[0.2] hover:text-[var(--color-text)]"
-                  }`}
+                }`}
               >
                 <span>{food.name}</span>
                 {isActive && (
@@ -205,7 +210,7 @@ export default function FoodHistory() {
           })}
         </div>
 
-        {/* Selected Food Showcase Card */}
+        {/* Selected Food Showcase Card - 2-column layout */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentFood.id}
@@ -277,10 +282,10 @@ export default function FoodHistory() {
                     {currentFood.bulletPoints.map((point, idx) => (
                       <li
                         key={idx}
-                        className="text-xs md:text-sm text-[var(--color-text-dim)] leading-[1.85] flex items-start gap-3"
+                        className="text-xs md:text-sm text-[var(--color-text-muted)] leading-[1.85] flex items-start gap-3"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] mt-2 shrink-0 opacity-80" />
-                        <span>{point}</span>
+                        <span className="text-[var(--color-text)]/90">{point}</span>
                       </li>
                     ))}
                   </ul>
